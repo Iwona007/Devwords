@@ -8,19 +8,6 @@ import java.util.Arrays;
 public class AbsoluteMinSum {
 
     /**
-     * Sort copy of origin array
-     *
-     * @param arr - array to sort
-     * @return sorted array
-     */
-    public int[] arraySort(int[] arr) {
-        int[] arrayToSort = Arrays.copyOf(arr, arr.length);
-        Arrays.sort(arrayToSort);
-        System.out.println(Arrays.toString(arrayToSort)); //[1,3,3,5,7]
-        return arrayToSort;
-    }
-
-    /**
      * calculate sum of absolute of array according to pattern:
      * |1-3| = 2 |3-3| = 0 |3-5| = 2 |5-7| = 2
      * 2+0+2+2=6
@@ -28,8 +15,9 @@ public class AbsoluteMinSum {
      * @param sorted Array
      * @return sum of absolute of array
      */
-    public int getAbsoluteSum(int[] sorted) {
+    public int calculateAbsoluteSum(int[] sorted) {
         int absoluteSum = 0;
+        arraySort(sorted);
         for (int i = 0; i < sorted.length - 1; i++) {
             int elem0 = sorted[i]; //1
             int elem1 = sorted[i + 1]; //3
@@ -37,5 +25,18 @@ public class AbsoluteMinSum {
         }
 
         return absoluteSum;
+    }
+
+    /**
+     * Sort copy of origin array
+     *
+     * @param arr - array to sort
+     * @return sorted array
+     */
+    private int[] arraySort(int[] arr) {
+        int[] arrayToSort = Arrays.copyOf(arr, arr.length);
+        Arrays.sort(arrayToSort);
+        System.out.println(Arrays.toString(arrayToSort)); //[1,3,3,5,7]
+        return arrayToSort;
     }
 }
